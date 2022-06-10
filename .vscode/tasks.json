@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "Build",
+      "command": "/usr/bin/g++",
+      "args": [
+        "-g",
+        "${workspaceFolder}/src/*.cpp",
+        "-o",
+        "${workspaceFolder}/build/${workspaceFolderBasename}",
+        "-I",
+        "${workspaceFolder}/include",
+        "-std=c++17",
+      ],
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Build the project ..."
+    },
+    {
+      "type": "process",
+      "label": "Run",
+      "command": "./build/${workspaceFolderBasename}",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "detail": "Run the project ..."
+    },
+    {
+      "label": "Build & Run",
+      "dependsOn": ["Build", "Run"],
+      "dependsOrder": "sequence",
+      "detail": "Build and Run the project ..."
+    }
+  ]
+}
